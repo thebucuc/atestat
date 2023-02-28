@@ -1,0 +1,5 @@
+@import "bulma/css/bulma.css";
+#map {
+    height: 400px; /* The height is 400 pixels */
+    width: 60em; /* The width is the width of the web page */
+}
