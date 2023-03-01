@@ -8,17 +8,29 @@
       <script src="./index.js"></script>
   </head>
   <body>
-      <section class="section">
-          <div class="container has-text-centered is-justify-content-center">
-              <h1 class="title">
-                  Hello World
-              </h1>
-              <p class="subtitle">
-                  My first website with <strong>Bulma</strong>!
-              </p>
-              <div class="is-centered" id="map"></div>
+      <div class="box padextra">
+          <div class="columns is-centered has-text-right is-transparent">
+              <div class="column is-two-fifths">
+                  <div class="box padtiny notification is-primary">
+                      <h1 class="title">
+                          Welcome to <strong>bus wizard</strong>!
+                      </h1>
+                      <p class="subtitle">
+                          Please select your wanted route!
+                      </p>
+                      <div class="select">
+                          <select onchange="routeChangeTest()" id="selector">
+                              <option value="1"> Route 1</option>
+                              <option value="2"> Route 2</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div style="height: 25rem; width: 30rem;" class="column">
+                  <div style="height: 100%; width: 100%;" class="box notification is-warning " id="map"></div>
+              </div>
           </div>
-      </section>
+      </div>
       <script
               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqfs6zdlsTE9iDA28nD3pVaLstyOuDz3c&callback=initMap&v=weekly"
               defer

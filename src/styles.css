@@ -1,5 +1,15 @@
 @import "bulma/css/bulma.css";
 #map {
-    height: 400px; /* The height is 400 pixels */
-    width: 60em; /* The width is the width of the web page */
+    height: 20rem; /* The height is 400 pixels */
+    width: 40rem; /* The width is the width of the web page */
+}
+.padextra
+{
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+.padtiny
+{
+    padding-left:2rem;
+    padding-right:2rem;
 }
