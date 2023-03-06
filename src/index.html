@@ -4,11 +4,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>habibi</title>
-      <link rel="stylesheet" href="styles.css">
-      <script src="./index.js"></script>
+      <link rel="stylesheet" href="src/styles.css">
+
+      <script src="src/index.js"></script>
+
   </head>
   <body>
-      <div class="box padextra">
+      <div class="box is-mobile is-fluid">
           <div class="columns is-centered has-text-right is-transparent">
               <div class="column is-two-fifths">
                   <div class="box padtiny notification is-primary">
@@ -26,15 +28,24 @@
                       </div>
                   </div>
               </div>
-              <div style="height: 25rem; width: 30rem;" class="column">
+              <div style="height: 20rem; width: 23rem;" class="column">
                   <div style="height: 100%; width: 100%;" class="box notification is-warning " id="map"></div>
               </div>
+          </div>
+      </div>
+      <div class="box is-mobile is-fluid">
+          <div class="tabs is-toggle">
+              <ul>
+                  <li class="is-active"><a>Bus Routes</a></li>
+                  <li><a>Tourism Destinations</a></li>
+              </ul>
           </div>
       </div>
       <script
               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqfs6zdlsTE9iDA28nD3pVaLstyOuDz3c&callback=initMap&v=weekly"
               defer
       ></script>
+
 
   </body>
 </html>
