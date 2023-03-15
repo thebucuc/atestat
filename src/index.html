@@ -4,12 +4,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>habibi</title>
-      <link rel="stylesheet" href="src/styles.css">
-
-      <script src="src/index.js"></script>
-
+      <link rel="stylesheet" href="styles.css">
+      <script src="index.js"></script>
+      <link href="output.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="bg-white">
+  <!--
       <div class="box is-mobile is-fluid">
           <div class="columns is-centered has-text-right is-transparent">
               <div class="column is-two-fifths">
@@ -21,7 +21,7 @@
                           Please select your wanted route!
                       </p>
                       <div class="select">
-                          <select onchange="routeChangeTest()" id="selector">
+                          <select onchange="onRouteChange()" id="selector">
                               <option value="1"> Route 1</option>
                               <option value="2"> Route 2</option>
                           </select>
@@ -41,11 +41,38 @@
               </ul>
           </div>
       </div>
-      <script
-              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqfs6zdlsTE9iDA28nD3pVaLstyOuDz3c&callback=initMap&v=weekly"
-              defer
-      ></script>
+      -->
+    <div class="flex flex-row bg-purple-200 place-items-center">
 
+            <div class="content-center p-10 basis-1/3 justify-center    ">
+                <a href="https:://localhost/src/index.html" class="drop-shadow-md hover:drop-shadow-xl hover:font-black hover:text-purple-400
+                bg-purple-50 rounded-full p-3 px-8 text-3xl text-bold">Discover Vaslui</a>
+            </div>
+
+    </div>
+
+    <div class="flex flex-col justify-center items-center space-y-4 p-4" style="min-width: 350px">
+        <div class="container max-w-min p-4 h-auto bg-nice-orange items-center rounded-lg drop-shadow-2xl">
+            <p class="text-6xl font-bold font-sans px-6"> Welcome!</p>
+        </div>
+
+        <div class="container p-4 h-auto bg-nice-orange items-center rounded-lg drop-shadow-2xl">
+            <p class="text-6xl font-bold font-sans px-6"> Select your route!</p>
+            <div class="container h-auto w-auto drop-shadow-lg px-6 pt-2">
+                <select onchange="onRouteChange()" name="route-picker" class="p-1 text-xl font-bold font-sans  rounded-lg" id="selector">
+                    <option value="1">Route 1</option>
+                    <option value="2">Route 2</option>
+                </select>
+            </div>
+            <div style="min-width: 35px" class="container p-4 px-6 h-auto rounded-3xl drop-shadow-2xl">
+                <div class="w-max" id="map"></div>
+            </div>
+        </div>
+    </div>
+  <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqfs6zdlsTE9iDA28nD3pVaLstyOuDz3c&callback=initMap&v=weekly"
+            defer
+  ></script>
 
   </body>
 </html>

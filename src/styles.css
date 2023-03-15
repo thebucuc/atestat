@@ -1,7 +1,11 @@
-@import "bulma/css/bulma.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 #map {
-    height: 20rem; /* The height is 400 pixels */
-    width: 40rem; /* The width is the width of the web page */
+    min-height: 200px;
+
+    width: 100%;
+    position: relative;
 }
 .padextra
 {
@@ -13,3 +17,10 @@
     padding-left:2rem;
     padding-right:2rem;
 }
+
+ .example-content {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100%;
+ }

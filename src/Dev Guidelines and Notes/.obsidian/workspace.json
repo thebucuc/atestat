@@ -47,9 +47,11 @@
             "id": "23eec5bb089d3040",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.1.16"
+                "file": "TODO LIST.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
