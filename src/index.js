@@ -7,7 +7,8 @@ let directionsService;
 let directionsRenderer;
 let map;
 
-
+//idk how promises work
+//forgive me future self
 function fetchData() {
     return fetch('http://localhost/routes.json')
         .then(response => response.json())
@@ -21,20 +22,11 @@ function fetchData() {
         .catch(error => console.error(error));
 }
 
-fetchData()
-    .then(data => {
-        // use responseData variable here, after fetchData() has completed
-        console.log(responseData);
-    })
-    .then(
-
-    )
-    .catch(error => console.error(error));
 
 function initMap() {
 
     const procoloco={ lat: 46.64268725956498, lng: 27.71892655823447 };
-    map = new window.google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         zoom: 15,
         center: procoloco, // proco loco.
         disableDefaultUI: true,
@@ -50,8 +42,11 @@ function initMap() {
     directionsRenderer.setMap(map);
     map.addListener("resize", () => { map.getViewPort().resize();});
     addMarkers();
+    insertAllControlButtons();
 
 }
+
+
 function addMarkers()
 {
 
@@ -146,7 +141,9 @@ function onRouteChange()
 
 }
 
-window.initMap = initMap;
+//window.initMap = initMap;
+initMap();
+
 
 
 

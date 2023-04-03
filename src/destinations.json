@@ -1,0 +1,23 @@
+{
+  "destinations":
+  [
+    {
+      "name":"Liceul Ștefan Procopiu",
+      "lat":"46.64333225279801",
+      "lng": "27.719046965119666",
+      "type": "misc"
+    },
+    {
+      "name":"Crucea Iluminată din Tanacu",
+      "lat": "46.66809851314826",
+      "lng": "27.791847229219243",
+      "type": "photos"
+    },
+    {
+      "name": "Movila lui Burcel",
+      "lat": "46.84942597989989",
+      "lng": "27.801701420515876",
+      "type": "history"
+    }
+  ]
+}
