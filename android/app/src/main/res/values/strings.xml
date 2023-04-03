@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">untitled</string>
+    <string name="title_activity_main">untitled</string>
+    <string name="package_name">com.bucuc.untitled</string>
+    <string name="custom_url_scheme">com.bucuc.untitled</string>
+</resources>
