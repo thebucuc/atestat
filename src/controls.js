@@ -1,28 +1,33 @@
-function insertAllControlButtons()
+let dest=require('./destinations.json');
+var maps;
+let searchbar,search;
+function insertAllControlButtons(map)
 {
-    //--------------
-    //this is trash
-    //createCenterButton();
-    //--------------
+    console.log("what the fuck");
+    maps=map;
+    searchbar=document.createElement("div");
+    searchbar.innerHTML=
+        "<div class=\"flex justify-center mt-2\">\n" +
+        "  <div class=\"mb-3 w-auto h-auto\">\n" +
+        "    <input\n" +
+        "      type=\"search\" \n" +
+        "      class=\"relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-black outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-gray-50\"\n" +
+        "      id=\"searche\"\n" +
+        "      placeholder=\"Type query\" />\n" +
+        "  </div>\n" +
+        "</div>";
     createMainSidebar();
+    search=document.getElementById("searche");
+    console.log(search);
+    search.addEventListener("input",updateSearchbarQuery(search.value));
+
 }
-let searchbar;
-searchbar=document.createElement("div");
-searchbar.innerHTML=
-    "<div class=\"flex justify-center mt-2\">\n" +
-    "  <div class=\"mb-3 w-auto h-auto\">\n" +
-    "    <input\n" +
-    "      type=\"search\" oninput=\"updateSearchbarQuery(this.value)\" \n" +
-    "      class=\"relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-white outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-gray-50\"\n" +
-    "      id=\"exampleSearch\"\n" +
-    "      placeholder=\"Type query\" />\n" +
-    "  </div>\n" +
-    "</div>";
+
 function createMainSidebar()
 {
     //NOTE THAT document.innerHTML exists
 
-    var dropdown2 = document.createElement("div");
+    let dropdown2 = document.createElement("div");
     dropdown2.innerHTML="<div class=\"flex \">\n" +
         "           <input type=\"checkbox\" id=\"drawer-toggle\" class=\"relative sr-only peer\" checked>\n" +
         "           <label for=\"drawer-toggle\" class=\"fixed top-0 left-0 inline-block p-2 transition-all duration-500 bg-blue-500 rounded-lg peer-checked:rotate-180 peer-checked:left-64 ml-4 mt-3\">\n" +
@@ -53,35 +58,51 @@ function createMainSidebar()
         "             </div>\n" +
         "           </div>\n" +
         "         </div>\n";
-    map.controls[google.maps.ControlPosition.LEFT_CENTER].push(dropdown2);
+    maps.controls[google.maps.ControlPosition.LEFT_CENTER].push(dropdown2);
 
 }
 
-let a,responses=[];
+let responses=[],d,i;
 function initResponses()
 {
-    fetch("http://localhost/destinations.json")
+    /*
+        fetch("http://localhost/destinations.json" ,{mode: 'no-cors'})
         .then(response => response.json())
-        .then(json => {
-            //console.log(json);
-             a = Array(json.destinations.length);
-            //let responses = [];
-            for (let i = 0; i < json.destinations.length; i++) {
+        .then(data => {
+            for (i = 0; i < data.destinations.length; i++) {
                 let e = document.createElement("div");
+                d = {lat: parseFloat(destinations[i].lat), lng: parseFloat(data.destinations[i].lng)};
                 e.innerHTML =
-                    "<div>\n" +
-                    "        <p>" + json.destinations[i].name + "</p>\n" +
-                    "</div>"
+                    "<div class=\"py-1 text-black\">\n" +
+                    "        <p class=\"text-black\">" + data.destinations[i].name + "</p>\n" +
+                    "<button onclick=\"centerOnDestination("+i+")\" class=\"bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full\">\n" +
+                    "  Add to Route\n" +
+                    "</button>\n"+
+                    "</div>\n";
+                //console.log(data);
                 responses.push(e);
             }
-        })
+        })*/
+    for (let i = 0; i < dest.length; i++) {
+        let e = document.createElement("div");
+        d = {lat: parseFloat(dest[i].lat), lng: parseFloat(dest[i].lng)};
+        e.innerHTML =
+            "<div class=\"py-1 text-black\">\n" +
+            "        <p class=\"text-black\">" + dest[i].name + "</p>\n" +
+            "<button onclick=\"centerOnDestination("+i+")\" class=\"bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full\">\n" +
+            "  Add to Route\n" +
+            "</button>\n"+
+            "</div>\n";
+        //console.log(data);
+        responses.push(e);
+    }
 }
 
 function updateSearchbarQuery(token)
 {
     let root=document.getElementById("search");
-
-    fetch("http://localhost/destinations.json")
+    /*
+    fetch("http://localhost/destinations.json",{mode: 'no-cors'})
         .then(response => response.json())
         .then(json =>
         {
@@ -95,21 +116,34 @@ function updateSearchbarQuery(token)
                 //console.log(elements);
             }
         });
+        */
 
+    //console.log(responses);
+    for(let i=0;i<dest.length;i++)
+    {
+        let elements = dest[i].name.toLowerCase();
+        if(elements.includes(token.toLowerCase()) && token!='')
+            root.append(responses[i]);
+        else responses[i].remove();
+        //console.log(elements);
+    }
+
+
+}
+
+function centerOnDestination(destinationData)
+{
+    //console.log(parseFloat(destinationData.lat));
+    fetch("http://localhost/destinations.json")
+        .then(response => response.json())
+        .then(data=> {
+
+            maps.setCenter(new google.maps.LatLng(parseFloat(data.destinations[destinationData].lat)
+                , parseFloat(data.destinations[destinationData].lng)));
+        })
 }
 
 //trash looking button
-function createCenterButton()
-{
-    const centerControl = document.createElement("button");
-    centerControl.classList.add("rounded-full","text-xl","p-3","culoare","drop-shadow-md","mt-3");
-    centerControl.textContent = "Center Map";
-    centerControl.title = "Click to recenter the map";
-
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControl);
-    centerControl.addEventListener("click", () => {
-        map.setCenter(start);
-    });
-}
 
 initResponses();
+module.exports = {insertAllControlButtons,initResponses,updateSearchbarQuery};
