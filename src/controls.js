@@ -3,7 +3,6 @@ var maps;
 let searchbar,search;
 function insertAllControlButtons(map)
 {
-    console.log("what the fuck");
     maps=map;
     searchbar=document.createElement("div");
     searchbar.innerHTML=
@@ -143,7 +142,7 @@ function centerOnDestination(destinationData)
         })
 }
 
-//trash looking button
+
 
 initResponses();
 module.exports = {insertAllControlButtons,initResponses,updateSearchbarQuery};
