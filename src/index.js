@@ -7,7 +7,7 @@ let ld=require('@googlemaps/js-api-loader');
 let clone;
 //let geometry=require('google.maps.GeometryLibrary');
 const apiOptions = {
-    apiKey: "AIzaSyBqfs6zdlsTE9iDA28nD3pVaLstyOuDz3c",
+    apiKey: "-",
     libraries: ["geometry"],
 }
 const loader = new ld.Loader(apiOptions);
